@@ -9,7 +9,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef WIN32
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#include <winsock2.h>
+#else
 #include <sys/socket.h>
+#endif
 #include <unistd.h>
 
 #include "device_listener.h"

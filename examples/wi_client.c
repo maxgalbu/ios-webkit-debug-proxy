@@ -11,7 +11,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef WIN32
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#include <winsock2.h>
+#else
 #include <sys/socket.h>
+#endif
 #include <unistd.h>
 
 #include "webinspector.h"
@@ -121,7 +127,11 @@ int main(int argc, char **argv) {
   size_t buf_length = 1024;
   while (!quit_flag) {
     ssize_t read_bytes = recv(fd, buf, buf_length, 0);
+#ifndef WIN32
     if (read_bytes < 0 && errno == EWOULDBLOCK) {
+#else
+    if (read_bytes && WSAGetLastError() != WSAEWOULDBLOCK) {
+#endif
       continue;
     }
     if (wi->on_recv(wi, buf, read_bytes)) {

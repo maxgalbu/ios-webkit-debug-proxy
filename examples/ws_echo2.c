@@ -12,8 +12,14 @@
 #include <string.h>
 #include <assert.h>
 
+#ifdef WIN32
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#include <winsock2.h>
+#else
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#endif
 #include <errno.h>
 
 #include "socket_manager.h"
