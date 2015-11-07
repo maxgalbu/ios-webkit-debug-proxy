@@ -10,7 +10,7 @@
 #include <string.h>
 
 #include "ws_echo_common.h"
-#include "websocket.h"
+#include <iwdp/websocket.h>
 
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN 1

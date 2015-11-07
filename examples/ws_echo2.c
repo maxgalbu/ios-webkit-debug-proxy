@@ -22,7 +22,7 @@
 #endif
 #include <errno.h>
 
-#include "socket_manager.h"
+#include <iwdp/socket_manager.h>
 #include "ws_echo_common.h"
 
 struct my_sm_struct {

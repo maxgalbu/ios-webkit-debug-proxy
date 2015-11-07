@@ -20,7 +20,7 @@
 #endif
 #include <unistd.h>
 
-#include "webinspector.h"
+#include <iwdp/webinspector.h>
 
 // our state
 struct my_wi_struct {
